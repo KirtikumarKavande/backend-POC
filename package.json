@@ -5,7 +5,8 @@
     "@aws-sdk/cloudfront-signer": "^3.1012.0",
     "@aws-sdk/s3-request-presigner": "^3.1013.0",
     "axios": "^1.13.2",
-    "date-fns": "^4.1.0"
+    "date-fns": "^4.1.0",
+    "redis": "^5.11.0"
   },
   "type": "module"
 }
