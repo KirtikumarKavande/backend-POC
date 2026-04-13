@@ -1,9 +1,10 @@
 import { createClient } from "redis";
+const client = createClient();
+await client.connect();
+const ans = await client.json.get("users:102",
+    { path: '$..name' }
+)
 
-const client = await createClient()
-    .on("error", (err) => console.log("Redis Client Error", err))
-    .connect();
 
-await client.set("key", "value");
-const value = await client.get("key");
-client.destroy();
+console.log(ans)
+client.close()
