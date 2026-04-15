@@ -26,3 +26,18 @@ export async function getUser(userId) {
     return await getUserFromDB(userId);
   }
 }
+
+
+/**
+ * Update user and invalidate cache
+ */
+async function updateUser(userId, updatePayload) {
+  // 1. Update DB (source of truth)
+  await db.user.update({
+    where: { id: userId },
+    data: updatePayload,
+  });
+
+  // 2. Invalidate cache
+  await redis.del(`user:${userId}`);
+}
